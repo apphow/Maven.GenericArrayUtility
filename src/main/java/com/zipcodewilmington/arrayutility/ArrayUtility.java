@@ -12,6 +12,7 @@ import java.util.Arrays;
         ArrayUtility(T[] inputArray){
             this.inputArray = inputArray;
         }
+
         public Integer countDuplicatesInMerge(T [] arrayToMerge, T valueToEvaluate) {
             Integer count = 0;
             T[] newArray = merge(inputArray, arrayToMerge);
@@ -24,7 +25,12 @@ import java.util.Arrays;
         }
 
     private T[] merge(T[] inputArray, T[] arrayToMerge) {
-            return null;
+        T[] mergedArray = Arrays.copyOf(inputArray, inputArray.length + arrayToMerge.length);
+
+        for (int i = inputArray.length; i < mergedArray.length; i++) {
+            mergedArray[i] = arrayToMerge[i - inputArray.length];
+        }
+        return mergedArray;
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
